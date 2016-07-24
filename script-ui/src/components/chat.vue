@@ -1,5 +1,10 @@
 <template>
   <div class="chat">
+    <div class="board">
+      <div class="message" v-for="message in messages">
+        {{message.message}}
+      </div>
+    </div>
     <h1>{{ msg }}</h1>
     <input type="text" placeholder="Add your message..." class="input-msg"></input>
     <div class="btn btn-solid">Send</div>
@@ -7,21 +12,19 @@
 </template>
 
 <script>
-import ChatModel from '../models/ChatModel.js'
-export default {
-  data () {
-    return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello Chat!'
-    }
-  },
-  created () {
-    console.log('chat intialized');
-  }
-}
+ import ChatModel from '../models/ChatModel.js'
+ export default {
+   props: {
+     messages: {
+       type: Array,
+       default: () => []
+     }
+   },
+   created () {
+     console.log('chat intialized');
+     console.log(this.messages);
+   }
+ }
 </script>
 
 <style>

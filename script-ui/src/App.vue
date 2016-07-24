@@ -1,30 +1,40 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <chat></chat>
+    <chat :messages="messages"></chat>
   </div>
 </template>
 
 <script>
-import Chat from "./components/chat.vue"
-export default {
-  components: {
-    Chat
-  },
-  data () {
-    return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello Vue!'
-    }
-  }
-}
+ import Chat from "./components/chat.vue"
+ import ChatModel from "./models/ChatModel.js"
+ import Notifications from './services/NotificationService'
+
+ export default {
+   components: {
+     Chat
+   },
+   data(){
+     return {
+       messages: []
+     }
+   },
+   created(){
+     Notifications.listenFor("ChatModel.messagesUpdated", this.onMessagesUpdated, this);
+     ChatModel.watchAllMessages();
+   },
+
+   methods: {
+     onMessagesUpdated(e){
+       console.log("Got mess");
+       this.messages = ChatModel.messages;
+     }
+   }
+
+ }
 </script>
 
 <style>
-body {
-  font-family: Helvetica, sans-serif;
-}
+ body {
+   font-family: Helvetica, sans-serif;
+ }
 </style>
