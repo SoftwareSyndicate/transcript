@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <chat :messages="messages"></chat>
+    <chat :messages="messages" :create-message="createMessage"></chat>
   </div>
 </template>
 
@@ -27,6 +27,9 @@
      onMessagesUpdated(e){
        console.log("Got mess");
        this.messages = ChatModel.messages;
+     },
+     createMessage(message){
+       ChatModel.addMessage(message);
      }
    }
 
