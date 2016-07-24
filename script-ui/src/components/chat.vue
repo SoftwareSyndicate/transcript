@@ -2,6 +2,8 @@
   <div class="chat">
     <div class="board">
       <div class="message" v-for="message in messages">
+        <div class="avatar">
+        </div>
         {{message.message}}
       </div>
     </div>
@@ -38,28 +40,44 @@
 /*inherited style*/
 
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: Yantramanav, Helvetica, sans-serif;
+  background-color: #f5f6fa;
+
 }
 
 /*script-ui style*/
 
 .message {
   width: 92%;
-  padding: 10px 12px;
+  padding: 16px 12px;
   margin-bottom: 1em;
   color: #4A4A4A;
-  font-size: 12px;
-  font-weight: 400;
-  border-radius: 12px;
-  background: #F5F6FA;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.3em;
+  border: 1px solid #e2e5ef;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  background: #EAEEF9;
+  border-radius: 100px;
+  margin-right: 1em;
 }
 
 .input-msg {
   width: 92%;
   padding: 10px 12px;
   margin-bottom: 0.8em;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-family: Yantramanav, Helvetica, sans-serif;
+  font-weight: 300;
   border: 1px solid #EAEEF9;
   border-radius: 2px;
   border-style: solid;
@@ -69,6 +87,8 @@ body {
   border: 1px solid #11C362;
   outline: none;
   color: #4A4A4A;
+  font-family: Yantramanav, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 .btn {
@@ -76,7 +96,7 @@ body {
   padding: 10px 12px;
   margin-bottom: 1em;
   color: #14B143;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   background: #ffffff;
   border: 1px solid #11C362;
