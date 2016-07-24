@@ -1,24 +1,23 @@
 <template>
-  <div id="app">
+  <div class="chat">
     <h1>{{ msg }}</h1>
-    <chat></chat>
   </div>
 </template>
 
 <script>
-import Chat from "./components/chat.vue"
+import ChatModel from '../models/ChatModel.js'
 export default {
-  components: {
-    Chat
-  },
   data () {
     return {
       // note: changing this line won't causes changes
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      msg: 'Hello Vue!'
+      msg: 'Hello Chat!'
     }
+  },
+  created () {
+    console.log('chat intialized');
   }
 }
 </script>
