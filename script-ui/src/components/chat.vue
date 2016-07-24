@@ -7,7 +7,7 @@
     </div>
     <h1>{{ msg }}</h1>
     <input type="text" placeholder="Add your message..." class="input-msg" v-model="currentMessage"></input>
-    <div @click="createMessage(currentMessage)" class="btn btn-solid">Send</div>
+    <div @click="createMessage(currentMessage); currentMessage=''" class="btn btn-solid">Send</div>
   </div>
 </template>
 
@@ -42,6 +42,17 @@ body {
 }
 
 /*script-ui style*/
+
+.message {
+  width: 92%;
+  padding: 10px 12px;
+  margin-bottom: 1em;
+  color: #4A4A4A;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 12px;
+  background: #F5F6FA;
+}
 
 .input-msg {
   width: 92%;
