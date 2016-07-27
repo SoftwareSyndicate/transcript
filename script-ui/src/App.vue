@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <chat :messages="messages" :create-message="createMessage"></chat>
+    <chat :messages="messages" :create-message="createMessage" :current-message.sync="currentMessage"></chat>
   </div>
 </template>
 
@@ -15,7 +15,8 @@
    },
    data(){
      return {
-       messages: []
+       messages: [],
+       currentMessage: ''
      }
    },
    created(){
@@ -30,6 +31,7 @@
      },
      createMessage(message){
        ChatModel.addMessage(message);
+       this.currentMessage= '';
      }
    }
 

@@ -9,7 +9,7 @@
     </div>
     <h1>{{ msg }}</h1>
     <input type="text" placeholder="Add your message..." class="input-msg" v-model="currentMessage"></input>
-    <div @click="createMessage(currentMessage); currentMessage=''" class="btn btn-solid">Send</div>
+    <div @click="createMessage(currentMessage)" class="btn btn-solid">Send</div>
   </div>
 </template>
 
@@ -18,7 +18,6 @@
  export default {
    data() {
     return {
-      currentMessage: ''
     }
    },
    props: {
@@ -26,7 +25,8 @@
        type: Array,
        default: () => []
      },
-     createMessage: {}
+     createMessage: {},
+     currentMessage: {}
    },
    created () {
      console.log('chat intialized');
