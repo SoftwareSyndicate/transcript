@@ -9,12 +9,15 @@
     </div>
     <h1>{{ msg }}</h1>
     <input type="text" placeholder="Add your message..." class="input-msg" v-model="currentMessage"></input>
+    <div @click="startSpeech()" class="btn btn-solid">Speech</div>
     <div @click="createMessage(currentMessage)" class="btn btn-solid">Send</div>
   </div>
 </template>
 
 <script>
  import ChatModel from '../models/ChatModel.js'
+ import SpeechModel from '../models/SpeechModel.js'
+ import Notifications from '../services/NotificationService.js'
  export default {
    data() {
     return {
@@ -31,6 +34,16 @@
    created () {
      console.log('chat intialized');
      console.log(this.messages);
+     Notifications.listenFor("SpeechModel.gotText", this.onText, this);
+   },
+   methods: {
+     startSpeech(){
+       SpeechModel.startRecognition();
+     },
+     onText(e, text){
+       console.log(text);
+       this.currentMessage = text;
+     }
    }
  }
 </script>
