@@ -32,9 +32,14 @@
    methods: {
      onMessagesUpdated(e){
        this.messages = ChatModel.messages;
+       setTimeout(function(){
+         var objDiv = document.getElementById("board");
+         objDiv.scrollTop = objDiv.scrollHeight;
+       }, 50);
      },
-     createMessage(message){
-       ChatModel.addMessage(message);
+     createMessage(message, avatar){
+       console.log(avatar);
+       ChatModel.addMessage(message, avatar);
        this.currentMessage= '';
      }
    }

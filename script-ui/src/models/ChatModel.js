@@ -5,7 +5,7 @@ class ChatModel {
     this.messages = [];
   }
 
-  addMessage(message){
+  addMessage(message, avatar){
     let newMessageKey = firebase.database().ref().child('messages').push().key;
     let now = new Date().getTime();
     let newMessage = {
@@ -13,6 +13,7 @@ class ChatModel {
       message: message,
       created_at: now,
       updated_at: now,
+      avatar_url: avatar
     };
 
     var updates = {};

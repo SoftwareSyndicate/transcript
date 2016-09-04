@@ -3,7 +3,7 @@
     <div class="board" id="board">
       <div class="message" v-for="message in messages">
         <div class="avatar">
-          <img :src="avatar"/>
+          <img :src="message.avatar_url"/>
         </div>
         {{message.message}}
       </div>
@@ -12,7 +12,7 @@
     <div class="message-form">
       <input id="text-box" type="text" placeholder="Add your message..." class="input-msg" v-model="currentMessage"></input>
       <div @click="startSpeech()" class="btn btn-solid"><span>Speech</span></div>
-      <div @click="createMessage(currentMessage)" class="btn btn-solid"><span>Send</span></div>
+      <div @click="createMessage(currentMessage, avatar)" class="btn btn-solid"><span>Send</span></div>
     </div>
   </div>
 </template>
@@ -64,7 +64,8 @@
      onText(e, text){
        $('#text-box').css("background-color", "white");
        $('#text-box').css("color", "#4A4A4A");
-       this.createMessage(text)
+       console.log(this.avatar);
+       this.createMessage(text, this.avatar)
      }
    }
  }
