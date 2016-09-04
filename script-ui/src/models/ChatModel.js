@@ -27,7 +27,6 @@ class ChatModel {
       for(let key in data.val()){
         this.messages.push(data.val()[key]);
       }
-      console.log(this.messages);
       Notifications.notify("ChatModel.messagesUpdated");
     });
   }

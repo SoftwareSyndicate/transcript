@@ -1,17 +1,22 @@
 <template>
   <div id="app">
     <chat :messages="messages" :create-message="createMessage" :current-message.sync="currentMessage"></chat>
+    <!-- <web-video></web-video> -->
   </div>
 </template>
 
 <script>
  import Chat from "./components/chat.vue"
+ import WebVideo from "./components/video.vue"
  import ChatModel from "./models/ChatModel.js"
+ /* import Slave from "./models/Slave.js" */
+ import Master from "./models/Master.js"
  import Notifications from './services/NotificationService'
 
  export default {
    components: {
-     Chat
+     Chat,
+     WebVideo
    },
    data(){
      return {
@@ -26,7 +31,6 @@
 
    methods: {
      onMessagesUpdated(e){
-       console.log("Got mess");
        this.messages = ChatModel.messages;
      },
      createMessage(message){
